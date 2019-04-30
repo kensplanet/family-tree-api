@@ -7,10 +7,10 @@
 * The UI is seperately developed at https://github.com/kensplanet/family-tree
 
 ## Technologies
-* Java 11 
-* Spring Boot - contains packages to accelerate project development
-* Spring MVC - to design REST calls
-* Spring Security - authentication and security
+* **Java 11** 
+* **Spring Boot** - contains packages to accelerate project development
+* **Spring MVC** - to design REST calls
+* **Spring Security** - authentication and security
 
 ## Database
 * The application uses in-memory H2 database for fast development.
