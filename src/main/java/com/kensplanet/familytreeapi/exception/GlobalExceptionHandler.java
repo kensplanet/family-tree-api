@@ -9,8 +9,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(MemberNotFoundException.class)
-    public ResponseEntity<String> handleMemberException(MemberNotFoundException memberNotFoundException) {
+    public ResponseEntity<String> handleMemberNotFoundException(MemberNotFoundException memberNotFoundException) {
         return new ResponseEntity<>(memberNotFoundException.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(MemberEditException.class)
+    public ResponseEntity<String> handleMemberEditException(MemberEditException memberEditException) {
+        return new ResponseEntity<>(memberEditException.getMessage(), HttpStatus.FORBIDDEN);
     }
 
     @ExceptionHandler(Exception.class)

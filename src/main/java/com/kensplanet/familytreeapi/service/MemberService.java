@@ -1,11 +1,13 @@
 package com.kensplanet.familytreeapi.service;
 
+import com.kensplanet.familytreeapi.exception.MemberEditException;
 import com.kensplanet.familytreeapi.exception.MemberNotFoundException;
 import com.kensplanet.familytreeapi.model.Member;
 import com.kensplanet.familytreeapi.repository.MemberRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +45,9 @@ public class MemberService {
         } catch (EmptyResultDataAccessException emptyResultDataAccessException) {
             logger.error("Member {} not found in DB.", memberId);
             throw new MemberNotFoundException("Member not found.");
+        } catch (DataIntegrityViolationException dataIntegrityViolationException) {
+            logger.error("Member {} cannot be deleted.", memberId);
+            throw new MemberEditException("Member cannot be deleted.");
         }
         return memberId;
     }

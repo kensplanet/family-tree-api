@@ -41,7 +41,7 @@ public class ExceptionIntegrationTest {
     @Test
     @WithMockUser(username = "admin", roles = {"USER", "ADMIN"})
     public void deletingRelatedMemberIdThrows403() throws Exception {
-        mockMvc.perform(delete("/members/1000"))
-                .andExpect(status().isBadRequest());
+        mockMvc.perform(delete("/members/1"))
+                .andExpect(status().isForbidden());
     }
 }
