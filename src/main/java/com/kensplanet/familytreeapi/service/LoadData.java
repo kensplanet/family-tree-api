@@ -128,21 +128,6 @@ public class LoadData {
         member4.setSpouses(spouses3);
         member6.setSpouses(spouses3);
 
-
-        /*Parent parent2 = new Parent();
-        parent2.getMembers().add(member4);
-        parent2.getMembers().add(member3);
-        member4.getSpouses().add(parent2);
-        member3.getSpouses().add(parent2);
-        parent2.getChildren().add(member5);
-        member5.setParent(parent2);
-
-        Parent parent3 = new Parent();
-        parent3.getMembers().add(member4);
-        parent3.getMembers().add(member7);
-        member7.getSpouses().add(parent3);
-        member4.getSpouses().add(parent3);*/
-
         memberRepository.saveAll(memberList);
     }
 }
