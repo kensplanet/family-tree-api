@@ -26,13 +26,12 @@ public class MemberService {
 
     public Member getMember(Integer memberId) {
         logger.info("Getting member {} from DB.", memberId);
-        Member member = null;
+        Member member;
         try {
             member = memberRepository.findById(memberId).get();
         } catch (NoSuchElementException noSuchElementException) {
+            logger.error("Member {} not found in DB.", memberId);
             throw new MemberException("Member not found.");
-        } catch (Exception exception) {
-            exception.printStackTrace();
         }
         return member;
     }
