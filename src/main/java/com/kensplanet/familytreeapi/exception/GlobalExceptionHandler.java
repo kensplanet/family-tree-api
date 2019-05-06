@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(MemberException.class)
-    public ResponseEntity<String> handleMemberException(MemberException memberException) {
-        return new ResponseEntity<>(memberException.getMessage(), HttpStatus.BAD_REQUEST);
+    @ExceptionHandler(MemberNotFoundException.class)
+    public ResponseEntity<String> handleMemberException(MemberNotFoundException memberNotFoundException) {
+        return new ResponseEntity<>(memberNotFoundException.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)

@@ -1,10 +1,10 @@
 package com.kensplanet.familytreeapi.exception;
 
-public class MemberException extends RuntimeException {
+public class MemberNotFoundException extends RuntimeException {
 
     private String message;
 
-    public MemberException(String message) {
+    public MemberNotFoundException(String message) {
         super(message);
         this.message= message;
     }

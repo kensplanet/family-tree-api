@@ -1,6 +1,6 @@
 package com.kensplanet.familytreeapi.service;
 
-import com.kensplanet.familytreeapi.exception.MemberException;
+import com.kensplanet.familytreeapi.exception.MemberNotFoundException;
 import com.kensplanet.familytreeapi.model.Member;
 import com.kensplanet.familytreeapi.repository.MemberRepository;
 import org.slf4j.Logger;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.*;
 
 @Service
@@ -32,7 +31,7 @@ public class MemberService {
             member = memberRepository.findById(memberId).get();
         } catch (NoSuchElementException noSuchElementException) {
             logger.error("Member {} not found in DB.", memberId);
-            throw new MemberException("Member not found.");
+            throw new MemberNotFoundException("Member not found.");
         }
         return member;
     }
@@ -43,7 +42,7 @@ public class MemberService {
             memberRepository.deleteById(memberId);
         } catch (EmptyResultDataAccessException emptyResultDataAccessException) {
             logger.error("Member {} not found in DB.", memberId);
-            throw new MemberException("Member not found.");
+            throw new MemberNotFoundException("Member not found.");
         }
         return memberId;
     }
